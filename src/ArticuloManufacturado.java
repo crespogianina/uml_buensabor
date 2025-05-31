@@ -10,8 +10,8 @@ public class ArticuloManufacturado extends Articulo {
     private Set<ArticuloManufacturadoDetalle> detalles;
 
 
-    public ArticuloManufacturado(String denominacion, double precioVenta, String descripcion, int tiempoEstimadoMinutos, String preparacion){
-        super(denominacion, precioVenta);
+    public ArticuloManufacturado(String denominacion, UnidadMedida unidad, double precioVenta, String descripcion, int tiempoEstimadoMinutos, String preparacion) {
+        super(denominacion, precioVenta, unidad);
         this.descripcion = descripcion;
         this.tiempoEstimadoMinutos = tiempoEstimadoMinutos;
         this.preparacion = preparacion;
@@ -28,6 +28,7 @@ public class ArticuloManufacturado extends Articulo {
     public int getTiempoEstimadoMinutos() {
         return tiempoEstimadoMinutos;
     }
+
     public void setTiempoEstimadoMinutos(int tiempoEstimadoMinutos) {
         this.tiempoEstimadoMinutos = tiempoEstimadoMinutos;
     }
@@ -40,22 +41,25 @@ public class ArticuloManufacturado extends Articulo {
         this.preparacion = preparacion;
     }
 
-    public void addDetalle(Integer cantidad, ArticuloInsumo insumo) {
-        ArticuloManufacturadoDetalle detalle = new ArticuloManufacturadoDetalle(cantidad, insumo);
-        if (this.detalles == null){
-            this.detalles = new HashSet<ArticuloManufacturadoDetalle>();
-        }
-        this.detalles.add(detalle);
-    }
     public void addDetalle(ArticuloManufacturadoDetalle detalle) {
-        if (this.detalles == null){
+        if (this.detalles == null) {
             this.detalles = new HashSet<ArticuloManufacturadoDetalle>();
         }
         this.detalles.add(detalle);
     }
 
-    public void removeDetalle(ArticuloManufacturadoDetalle detalle){
+    public void removeDetalle(ArticuloManufacturadoDetalle detalle) {
         this.detalles.remove(detalle);
     }
 
+    @Override
+    public String toString() {
+        return "ArticuloManufacturado{" +
+                super.toString() +
+                "descripcion='" + descripcion + '\'' +
+                ", tiempoEstimadoMinutos=" + tiempoEstimadoMinutos +
+                ", preparacion='" + preparacion + '\'' +
+                ", detalles=" + detalles +
+                '}';
+    }
 }

@@ -1,6 +1,3 @@
-import java.util.HashSet;
-import java.util.Set;
-
 public class ArticuloInsumo extends Articulo {
 
     private double precioCompra;
@@ -11,15 +8,15 @@ public class ArticuloInsumo extends Articulo {
     public ArticuloInsumo() {
     }
 
-    public ArticuloInsumo(double precioCompra, int stockActual, int stockMaximo, boolean esParaElaborar, String denominacion, double precioVenta) {
-        super(denominacion,precioVenta);
+    public ArticuloInsumo(double precioCompra, String denominacion, double precioVenta, UnidadMedida unidadMedida, Integer stockActual, Integer stockMaximo, boolean esParaElaborar) {
+        super(denominacion, precioVenta, unidadMedida);
         this.precioCompra = precioCompra;
         this.stockActual = stockActual;
         this.stockMaximo = stockMaximo;
         this.esParaElaborar = esParaElaborar;
     }
 
-    public double getPrecioCompra(){
+    public double getPrecioCompra() {
         return precioCompra;
     }
 
@@ -47,7 +44,18 @@ public class ArticuloInsumo extends Articulo {
         return esParaElaborar;
     }
 
-    public void setEsParaElaborar(boolean esParaElaborar){
+    public void setEsParaElaborar(boolean esParaElaborar) {
         this.esParaElaborar = esParaElaborar;
+    }
+
+    @Override
+    public String toString() {
+        return "ArticuloInsumo{" +
+                super.toString() +
+                "precioCompra=" + precioCompra +
+                ", stockActual=" + stockActual +
+                ", stockMaximo=" + stockMaximo +
+                ", esParaElaborar=" + esParaElaborar +
+                '}';
     }
 }

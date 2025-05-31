@@ -65,4 +65,14 @@ public class Categoria {
     public void removeArticulo(Articulo articulo){
         this.articulos.remove(articulo);
     }
+
+    @Override
+    public String toString() {
+        return "Categoria{" +
+                "denominacion='" + denominacion + '\'' +
+                ", subcategorias=" + subcategorias +
+                ", categoriaPadre=" + categoriaPadre +
+                ", articulos=" + articulos +
+                '}';
+    }
 }

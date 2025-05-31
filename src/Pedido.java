@@ -1,3 +1,6 @@
+
+import java.time.LocalTime;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -18,14 +21,15 @@ public class Pedido {
     private Set<DetallePedido> detallePedido;
 
 
-    Pedido(LocalTime horaEstimadaFinalizacion, double total, double totalCosto, TipoEnvio tipoEnvio,FormaPago formaPago, LocalDate fechaPedido ){
+    Pedido(LocalTime horaEstimadaFinalizacion, double total, double totalCosto, TipoEnvio tipoEnvio, FormaPago formaPago, LocalDate fechaPedido) {
         this.horaEstimadaFinalizacion = horaEstimadaFinalizacion;
         this.total = total;
-        this.totalCosto = totalCosto;
         this.tipoEnvio = tipoEnvio;
         this.formaPago = formaPago;
         this.fechaPedido = fechaPedido;
-        this.estado = Estado.pendiente;
+        this.estado = Estado.PENDIENTE;
+        calcularTotalCosto();
+        calcularTotal();
     }
 
     public void setEstado(Estado estado) {
@@ -40,12 +44,12 @@ public class Pedido {
         return factura;
     }
 
-    public void addDetallePedido(DetallePedido detallePedido){
-        if(this.detallePedido == null) this.detallePedido = new HashSet<>();
+    public void addDetallePedido(DetallePedido detallePedido) {
+        if (this.detallePedido == null) this.detallePedido = new HashSet<>();
         this.detallePedido.add(detallePedido);
     }
 
-    public void removeDetallePedido(DetallePedido detallePedido){
+    public void removeDetallePedido(DetallePedido detallePedido) {
         this.detallePedido.remove(detallePedido);
     }
 
@@ -53,12 +57,30 @@ public class Pedido {
         this.horaEstimadaFinalizacion = horaEstimadaFinalizacion;
     }
 
-    public void setTotal(double total) {
-        this.total = total;
+    public void calcularTotal() {
+        if (detallePedido != null) {
+
+            double totalAcc = 0;
+            for (DetallePedido detalle : detallePedido) {
+                totalAcc += detalle.getSubTotal();
+            }
+            this.total = totalAcc;
+        }
     }
 
-    public void setTotalCosto(double totalCosto) {
-        this.totalCosto = totalCosto;
+    public void calcularTotalCosto() {
+        if (detallePedido != null) {
+
+            double totalPrecioCompraAcc = 0;
+            for (DetallePedido detalle : detallePedido) {
+                Articulo articulo = detalle.getArticulo();
+
+                if (articulo instanceof ArticuloInsumo) {
+                    totalPrecioCompraAcc += ((ArticuloInsumo) articulo).getPrecioCompra();
+                }
+            }
+            this.totalCosto = totalPrecioCompraAcc;
+        }
     }
 
     public void setTipoEnvio(TipoEnvio tipoEnvio) {

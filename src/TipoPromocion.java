@@ -1,4 +1,4 @@
 public enum TipoPromocion {
-    happyHour,
-    promocion1;
+    HAPPYHOUR,
+    PROMOCION1;
 }

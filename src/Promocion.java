@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Promocion {
+
     private String denominacion;
     private LocalDate fechaDesde;
     private LocalDate fechaHasta;
@@ -11,7 +12,9 @@ public class Promocion {
     private LocalTime horaHasta;
     private String descripcionDescuento;
     private Double precioPromocional;
+
     private TipoPromocion tipoPromocion;
+
     private Set<Imagen> imagenes = new HashSet<Imagen>();
     private Set<Articulo> articulos = new HashSet<Articulo>();
 
@@ -31,14 +34,14 @@ public class Promocion {
 
     }
 
-    public void addArticulo(Articulo articulo){
+    public void addArticulo(Articulo articulo) {
         if (this.articulos == null) {
             this.articulos = new HashSet<>();
         }
         this.articulos.add(articulo);
     }
 
-    public void rmArticulo(Articulo articulo){
+    public void rmArticulo(Articulo articulo) {
         this.articulos.remove(articulo);
     }
 
@@ -47,12 +50,12 @@ public class Promocion {
             this.imagenes = new HashSet<>();
         }
         this.imagenes.add(imagen);
-
     }
 
     public void rmImagen(Imagen imagen) {
         this.imagenes.remove(imagen);
     }
+
 
     public String getDenominacion() {
         return denominacion;
@@ -62,6 +65,7 @@ public class Promocion {
         this.denominacion = denominacion;
     }
 
+
     public LocalDate getFechaDesde() {
         return fechaDesde;
     }
@@ -69,6 +73,7 @@ public class Promocion {
     public void setFechaDesde(LocalDate fechaDesde) {
         this.fechaDesde = fechaDesde;
     }
+
 
     public LocalDate getFechaHasta() {
         return fechaHasta;
@@ -78,6 +83,7 @@ public class Promocion {
         this.fechaHasta = fechaHasta;
     }
 
+
     public LocalTime getHoraDesde() {
         return horaDesde;
     }
@@ -86,6 +92,7 @@ public class Promocion {
         this.horaDesde = horaDesde;
     }
 
+
     public LocalTime getHoraHasta() {
         return horaHasta;
     }
@@ -93,6 +100,7 @@ public class Promocion {
     public void setHoraHasta(LocalTime horaHasta) {
         this.horaHasta = horaHasta;
     }
+
 
     public String getDescripcionDescuento() {
         return descripcionDescuento;
@@ -110,6 +118,7 @@ public class Promocion {
         this.precioPromocional = precioPromocional;
     }
 
+
     public TipoPromocion getTipoPromocion() {
         return tipoPromocion;
     }
@@ -118,19 +127,19 @@ public class Promocion {
         this.tipoPromocion = tipoPromocion;
     }
 
-    public Set<Imagen> getImagenes() {
-        return imagenes;
-    }
-
-    public void setImagenes(Set<Imagen> imagenes) {
-        this.imagenes = imagenes;
-    }
-
-    public Set<Articulo> getArticulos() {
-        return articulos;
-    }
-
-    public void setArticulos(Set<Articulo> articulos) {
-        this.articulos = articulos;
+    @Override
+    public String toString() {
+        return "Promocion{" +
+                "denominacion='" + denominacion + '\'' +
+                ", fechaDesde=" + fechaDesde +
+                ", fechaHasta=" + fechaHasta +
+                ", horaDesde=" + horaDesde +
+                ", horaHasta=" + horaHasta +
+                ", descripcionDescuento='" + descripcionDescuento + '\'' +
+                ", precioPromocional=" + precioPromocional +
+                ", tipoPromocion=" + tipoPromocion +
+                ", imagenes=" + imagenes +
+                ", articulos=" + articulos +
+                '}';
     }
 }

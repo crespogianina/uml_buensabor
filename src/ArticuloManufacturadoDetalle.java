@@ -13,7 +13,7 @@ public class ArticuloManufacturadoDetalle {
         return insumo;
     }
 
-    public void setArticuloInsumo(ArticuloInsumo insumo){
+    public void setArticuloInsumo(ArticuloInsumo insumo) {
         this.insumo = insumo;
     }
 
@@ -23,5 +23,13 @@ public class ArticuloManufacturadoDetalle {
 
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
+    }
+
+    @Override
+    public String toString() {
+        return "ArticuloManufacturadoDetalle{" +
+                "cantidad=" + cantidad +
+                ", insumo=" + insumo +
+                '}';
     }
 }
