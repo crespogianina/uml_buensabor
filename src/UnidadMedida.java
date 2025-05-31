@@ -9,8 +9,10 @@ public class UnidadMedida {
         return denominacion;
     }
 
-    public void setDenominacion(String denominacion) {
-        this.denominacion = denominacion;
+    @Override
+    public String toString() {
+        return "UnidadMedida{" +
+                "denominacion='" + denominacion + '\'' +
+                '}';
     }
-
 }

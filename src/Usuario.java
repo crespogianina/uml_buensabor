@@ -26,4 +26,12 @@ public class Usuario {
     public void setUsername(String username) {
         this.username = username;
     }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "auth0Id='" + auth0Id + '\'' +
+                ", username='" + username + '\'' +
+                '}';
+    }
 }

@@ -37,17 +37,13 @@ public class Empresa {
         return cuil;
     }
 
-    public void addSucursal(Sucursal sucursal){
-        if (this.sucursales==null)this.sucursales= new HashSet<>();
+    public void addSucursal(Sucursal sucursal) {
+        if (this.sucursales == null) this.sucursales = new HashSet<>();
         sucursales.add(sucursal);
     }
 
-    public void removeSucursal(Sucursal sucursal){
+    public void removeSucursal(Sucursal sucursal) {
         sucursales.remove(sucursal);
-    }
-
-    public Set<Sucursal>getSucursales() {
-        return sucursales;
     }
 
     public void setNombre(String nombre) {

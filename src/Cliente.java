@@ -8,28 +8,11 @@ public class Cliente {
     private String telefono;
     private String email;
     private LocalDate fechaNacimiento;
-    private Set<Pedido> pedidos = new HashSet<Pedido>();
+
     private Usuario usuario;
     private Imagen imagen;
+    private Set<Pedido> pedidos = new HashSet<Pedido>();
     private Set<Domicilio> domicilios = new HashSet<Domicilio>();
-
-   public void addDomicilio(Domicilio domicilio){
-       if(this.domicilios == null) this.domicilios =  new HashSet<>();
-       this.domicilios.add(domicilio);
-   }
-
-   public void removeDomicilio(Domicilio domicilio){
-        this.domicilios.remove(domicilio);
-   }
-
-    public void addPedido(Pedido pedido) {
-       if (this.pedidos == null) this.pedidos =  new HashSet<>();
-       this.pedidos.add(pedido);
-    }
-
-    public void removePedido(Pedido pedido) {
-           this.pedidos.remove(pedido);
-    }
 
     public Cliente() {
     }
@@ -51,6 +34,25 @@ public class Cliente {
         this.telefono = telefono;
         this.email = email;
         this.fechaNacimiento = fechaNacimiento;
+    }
+
+
+    public void addDomicilio(Domicilio domicilio) {
+        if (this.domicilios == null) this.domicilios = new HashSet<>();
+        this.domicilios.add(domicilio);
+    }
+
+    public void removeDomicilio(Domicilio domicilio) {
+        this.domicilios.remove(domicilio);
+    }
+
+    public void addPedido(Pedido pedido) {
+        if (this.pedidos == null) this.pedidos = new HashSet<>();
+        this.pedidos.add(pedido);
+    }
+
+    public void removePedido(Pedido pedido) {
+        this.pedidos.remove(pedido);
     }
 
     public String getNombre() {
@@ -93,14 +95,6 @@ public class Cliente {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public Set<Pedido> getPedidos() {
-        return pedidos;
-    }
-
-    public void setPedidos(Set<Pedido> pedidos) {
-        this.pedidos = pedidos;
-    }
-
     public Usuario getUsuario() {
         return usuario;
     }
@@ -117,8 +111,18 @@ public class Cliente {
         this.imagen = imagen;
     }
 
-    public Set<Domicilio> getDomicilios() {
-        return domicilios;
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", email='" + email + '\'' +
+                ", fechaNacimiento=" + fechaNacimiento +
+                ", usuario=" + usuario +
+                ", imagen=" + imagen +
+                ", pedidos=" + pedidos +
+                ", domicilios=" + domicilios +
+                '}';
     }
-
 }
